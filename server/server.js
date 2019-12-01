@@ -20,5 +20,5 @@ let newTodo = new Todo({
 });
 
 newTodo.save().then((res) => {
-    console.log('saved todo', res)
+    console.log('todo saved', res)
 }).catch((e) => console.log('unable to save todo', e))
