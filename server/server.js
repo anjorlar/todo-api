@@ -33,6 +33,10 @@ const app = express();
 //     console.log(JSON.stringify(docs, undefined, 2))
 // }).catch((err) => console.log('unable to save', err))
 
+app.post('/todos', (req, res) => {
+
+})
+
 app.listen(3000, () => {
     console.log('app listening on port 3000')
 })
