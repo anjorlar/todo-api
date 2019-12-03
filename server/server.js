@@ -2,28 +2,12 @@ const express = require('express');
 const bodyParser = require('body-parser');
 
 const { mongoose } = require('./db/mongoose');
-const Todo = require('./db/mongoose');
-const user = require('./db/mongoose');
+const Todo = require('./models/todo');
+const user = require('./models/user');
 
 const app = express();
-// let newTodo = new Todo({
-//     text: "order lunch",
-//     completed: false
-// });
 
-// newTodo.save().then((res) => {
-//     console.log('todo saved', res)
-// }).catch((e) => console.log('unable to save todo', e))
-
-// let anotherTodo = new Todo({
-//     text: '   new todo       '
-// });
-
-// anotherTodo.save().then((res) => {
-//     console.log(JSON.stringify(res, undefined, 2))
-// }).catch((err) => console.log("unable to save", err))
-
-
+app.use(bodyParser.json());
 
 // let user = new User({
 //     email: 'ade@hotmail.com'
@@ -34,7 +18,13 @@ const app = express();
 // }).catch((err) => console.log('unable to save', err))
 
 app.post('/todos', (req, res) => {
+    let todo = new Todo({
 
+        text: req.body.text
+    });
+    todo.save().then((doc) => {
+        res.send(doc)
+    }).catch((e) => res.status(400).send(e))
 })
 
 app.listen(3000, () => {
