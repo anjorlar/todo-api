@@ -65,9 +65,7 @@ app.delete('/todos/:id', (req, res) => {
                 text: 'id does not exist'
             })
         }
-        res.status(200).send({
-            text: 'delete successful'
-        });
+        res.status(200).send({ todo });
     }).catch((e) => res.status(400).send(e))
 })
 app.listen(PORT, () => {

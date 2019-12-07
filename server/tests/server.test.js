@@ -78,7 +78,7 @@ describe("Post /todos", () => {
                 expect(res.body.todo.text).toBe(todos[0].text)
             })
             .end(done)
-    })
+    });
 
     it('should return 404 if todo not found', (done) => {
         let hexId = new ObjectID().toHexString();
@@ -86,15 +86,30 @@ describe("Post /todos", () => {
             .get(`/todos/${hexId}`)
             .expect(404)
             .end(done)
-    })
+    });
 
     it('should return 404 for non-object ids', (done) => {
         request(app)
             .get('/todos/123anh')
             .expect(404)
             .end(done)
+    });
+});
+
+describe('delete /todos/:id', () => {
+
+    it('should remove a todo', (done) => {
+
+    });
+
+    it('should return 404 if todo not found', (done) => {
+
+    });
+
+    it('should return 404 if object id is invalid', (done) => {
+
     })
-})
+});
 
 // git commit -a -m 'adde new test case and route'
 
