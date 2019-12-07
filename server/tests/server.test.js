@@ -97,18 +97,32 @@ describe("Post /todos", () => {
 });
 
 describe('delete /todos/:id', () => {
-
     it('should remove a todo', (done) => {
-
+        let hexId = todos[1]._id.toHexString();
+        request(app)
+            .delete(`/todos/${hexId}`)
+            .expect(200)
+            .expect((res) => {
+                expect(res.body.todo._id).toBe(hexId);
+            })
+            .end((err, res) => {
+                if (err) {
+                    return done(err)
+                }
+                Todo.findById(hexId).then((todo) => {
+                    expect(todo).toBeUndefined();
+                    done();
+                }).catch((e) => done(e));
+            })
     });
 
-    it('should return 404 if todo not found', (done) => {
+    // it('should return 404 if todo not found', (done) => {
 
-    });
+    // });
 
-    it('should return 404 if object id is invalid', (done) => {
+    // it('should return 404 if object id is invalid', (done) => {
 
-    })
+    // })
 });
 
 // git commit -a -m 'adde new test case and route'
