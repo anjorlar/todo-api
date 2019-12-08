@@ -116,9 +116,9 @@ describe('delete /todos/:id', () => {
             })
     });
 
-    it('should return 404 if todo not found', (done) => {
+    // it('should return 404 if todo not found', (done) => {
 
-    });
+    // });
 
     // it('should return 404 if object id is invalid', (done) => {
 
