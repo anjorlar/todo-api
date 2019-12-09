@@ -67,9 +67,9 @@ app.delete('/todos/:id', (req, res) => {
         }
         res.send({ todo });
     }).catch((e) => res.status(400).send(e))
-})
+});
 app.listen(PORT, () => {
-    console.log('app listening on port ${PORT}')
+    console.log('app listening on port ${PORT}');
 });
 
 module.exports = app;
