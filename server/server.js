@@ -55,7 +55,7 @@ app.delete('/todos/:id', (req, res) => {
     let id = req.params.id;
 
     if (!ObjectID.isValid(id)) {
-        return res.stattus(404).send({
+        return res.status(404).send({
             text: 'id is not valid'
         })
     }
@@ -69,7 +69,7 @@ app.delete('/todos/:id', (req, res) => {
     }).catch((e) => res.status(400).send(e))
 });
 app.listen(PORT, () => {
-    console.log('app listening on port ${PORT}');
+    console.log(`app listening on port ${PORT}`);
 });
 
 module.exports = app;
