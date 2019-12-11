@@ -28,7 +28,7 @@ describe("Post /todos", () => {
             })
             .expect(200)
             .expect((res) => {
-                expect(res.body.text).toBe(text)
+                expect(res.body.doc.text).toBe(text)
             })
             .end((err, res) => {
                 if (err) {
@@ -136,7 +136,46 @@ describe('delete /todos/:id', () => {
     });
 });
 
+describe('Patch todo/:id', () => {
+    it('should update todo', (done) => {
+        let hexId = todos[0]._id.toHexString();
+        let text = 'This is a new text';
+        request(app)
+            .patch(`/todos/${hexId}`)
+            .send({
+                completed: true,
+                text
+            })
+            .expect(200)
+            .expect((res) => {
+                expect(res.body.todo.text).toBe(text);
+                expect(res.body.todo.completed).toBe(true);
+                expect(typeof res.body.todo.completedAt).toBe('number');
+            })
+            .end(done)
+    })
+
+    it('should clear completedAt when todo is not completed', (done) => {
+        let hexId = todos[0]._id.toHexString();
+        let text = 'This is a new text!!!!';
+        request(app)
+            .patch(`/todos/${hexId}`)
+            .send({
+                completed: false,
+                text
+            })
+            .expect(200)
+            .expect((res) => {
+                expect(res.body.todo.text).toBe(text)
+                expect(res.body.todo.completed).toBe(false)
+                expect(res.body.todo.completedAt).toBeFalsy()
+            })
+            .end(done)
+    })
+})
+
 // git commit -a -m 'adde new test case and route'
+// git commit -am 'added new file'
 
 // Users-MBP:~ user$ cd mongo
 // Users-MBP:mongo user$ cd bin

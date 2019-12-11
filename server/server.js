@@ -1,3 +1,5 @@
+require('./config/config.js')
+
 const _ = require('lodash');
 const express = require('express');
 const bodyParser = require('body-parser');
@@ -54,7 +56,7 @@ app.get('/todos/:id', (req, res) => {
             })
         }
         res.send({
-            message: "todo gotten by id successfully",
+            message: "todo gotten by ID successfully",
             todo
         });
     }).catch((err) => res.status(400).send(err))
@@ -102,7 +104,7 @@ app.patch('/todos/:id', (req, res) => {
             });
         }
         res.status(200).send({
-            message: 'updated successfully',
+            message: 'todo updated successfully',
             todo
         })
     }).catch((e) => res.status(400).send({ text: `todo not found` }))
