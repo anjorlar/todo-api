@@ -59,7 +59,9 @@ describe("Post /todos", () => {
                 }).catch((e) => done(e))
             })
     })
+})
 
+describe('get/todos', () => {
     it('should get all todos', (done) => {
         request(app)
             .get('/todos')
@@ -69,7 +71,9 @@ describe("Post /todos", () => {
             })
             .end(done)
     })
+})
 
+describe('get/todos:id', () => {
     it('should get todo by id', (done) => {
         request(app)
             .get(`/todos/${todos[0]._id.toHexString()}`)
@@ -107,22 +111,29 @@ describe('delete /todos/:id', () => {
             })
             .end((err, res) => {
                 if (err) {
-                    return done(err)
+                    return done(err);
                 }
                 Todo.findById(hexId).then((todo) => {
-                    expect(todo).toBeUndefined();
+                    expect(todo).toBeFalsy();
                     done();
                 }).catch((e) => done(e));
             })
     });
 
-    // it('should return 404 if todo not found', (done) => {
+    it('should return 404 if todo not found', (done) => {
+        let hexId = new ObjectID().toHexString();
+        request(app)
+            .delete(`/todos/${hexId}`)
+            .expect(404)
+            .end(done);
+    });
 
-    // });
-
-    // it('should return 404 if object id is invalid', (done) => {
-
-    // })
+    it('should return 404 if object id is invalid', (done) => {
+        request(app)
+            .delete('/todos/123anh')
+            .expect(404)
+            .end(done);
+    });
 });
 
 // git commit -a -m 'adde new test case and route'
@@ -142,4 +153,5 @@ Users-MBP:bin user$ redis-cli
 OK
 127.0.0.1:6379[10]>
 Users-MBP:bin user$
+git add -a -m 'fixed typo in server.js'
 */
