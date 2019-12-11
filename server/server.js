@@ -24,13 +24,19 @@ app.post('/todos', (req, res) => {
         text: req.body.text
     });
     todo.save().then((doc) => {
-        res.send(doc)
+        res.send({
+            message: "todo created successfully",
+            doc
+        })
     }).catch((e) => res.status(400).send(e))
 });
 
 app.get('/todos', (req, res) => {
     Todo.find().then((todos) => {
-        res.send({ todos })
+        res.send({
+            message: 'all todo gotten successfully',
+            todos
+        })
     }).catch((e) => res.status(400).status(e))
 });
 
@@ -47,7 +53,10 @@ app.get('/todos/:id', (req, res) => {
                 text: 'id does not exist'
             })
         }
-        res.send({ todo });
+        res.send({
+            message: "todo gotten by id successfully",
+            todo
+        });
     }).catch((err) => res.status(400).send(err))
     // res.send(req.params);
 });
@@ -66,7 +75,10 @@ app.delete('/todos/:id', (req, res) => {
                 text: 'id does not exist'
             });
         }
-        res.send({ todo });
+        res.send({
+            message: 'todo deleted by ID successfuly',
+            todo
+        });
     }).catch((e) => res.status(400).send(e))
 });
 
@@ -90,7 +102,7 @@ app.patch('/todos/:id', (req, res) => {
             });
         }
         res.status(200).send({
-            text: 'updated successfully',
+            message: 'updated successfully',
             todo
         })
     }).catch((e) => res.status(400).send({ text: `todo not found` }))
