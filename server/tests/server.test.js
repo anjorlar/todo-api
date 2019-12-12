@@ -10,7 +10,7 @@ const todos = [{
 }, {
     _id: new ObjectID(),
     text: 'second test todo'
-}]
+}];
 
 beforeEach((done) => {
     Todo.remove({}).then(() => {
@@ -20,7 +20,6 @@ beforeEach((done) => {
 describe("Post /todos", () => {
     it('should create a new todo', (done) => {
         let text = 'Test todo text';
-
         request(app)
             .post('/todos')
             .send({
@@ -41,10 +40,10 @@ describe("Post /todos", () => {
                     done();
                 }).catch((e) => done(e))
             })
-    })
+    });
 
     it('should not create todo with invalid body data', (done) => {
-        let text = ''
+        let text = '';
         request(app)
             .post('/todos')
             .send({ text })
@@ -58,8 +57,8 @@ describe("Post /todos", () => {
                     done();
                 }).catch((e) => done(e))
             })
-    })
-})
+    });
+});
 
 describe('get/todos', () => {
     it('should get all todos', (done) => {
@@ -70,8 +69,8 @@ describe('get/todos', () => {
                 expect(res.body.todos.length).toBe(2);
             })
             .end(done)
-    })
-})
+    });
+});
 
 describe('get/todos:id', () => {
     it('should get todo by id', (done) => {
@@ -153,7 +152,7 @@ describe('Patch todo/:id', () => {
                 expect(typeof res.body.todo.completedAt).toBe('number');
             })
             .end(done)
-    })
+    });
 
     it('should clear completedAt when todo is not completed', (done) => {
         let hexId = todos[0]._id.toHexString();
@@ -171,8 +170,8 @@ describe('Patch todo/:id', () => {
                 expect(res.body.todo.completedAt).toBeFalsy()
             })
             .end(done)
-    })
-})
+    });
+});
 
 // git commit -a -m 'adde new test case and route'
 // git commit -am 'added new file'
