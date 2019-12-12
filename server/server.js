@@ -43,7 +43,7 @@ app.get('/todos', (req, res) => {
 });
 
 app.get('/todos/:id', (req, res) => {
-    let id = req.params.id
+    let id = req.params.id;
     if (!ObjectID.isValid(id)) {
         return res.status(404).send({
             text: 'id is not valid'
