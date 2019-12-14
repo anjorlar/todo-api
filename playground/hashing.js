@@ -1,23 +1,40 @@
 const { SHA256 } = require('crypto-js');
+const jwt = require('jsonwebtoken');
 
-let message = 'abc123';
-let hash = SHA256(message).toString();
+// jwt.sign
+// jwt.verify
 
-console.log(`Message: ${message}`);
-console.log(`Hash: ${hash}`);
+// using jwt
 
 let data = {
-    id: 4
+    id: 10
 };
-let token = {
-    data,
-    hash: SHA256(JSON.stringify(data) + 'somesecret').toString()
-};
+let token = jwt.sign(data, '123abc');
+console.log(token)
 
-let resultHash = SHA256(JSON.stringify(token.data) + 'somesecret').toString();
+// using 'crypto-js'
 
-if (resultHash === token.hash) {
-    console.log('data was not changed')
-} else {
-    console.log('data was changed. do nit trust!')
-}
+// let message = 'abc123';
+// let hash = SHA256(message).toString();
+
+// console.log(`Message: ${message}`);
+// console.log(`Hash: ${hash}`);
+
+// let data = {
+//     id: 4
+// };
+// let token = {
+//     data,
+//     hash: SHA256(JSON.stringify(data) + 'somesecret').toString()
+// };
+
+// // token.data.id = 5;
+// // token.hash = SHA256(JSON.stringify(token.data)).toString();
+
+// let resultHash = SHA256(JSON.stringify(token.data) + 'somesecret').toString();
+
+// if (resultHash === token.hash) {
+//     console.log('data was not changed')
+// } else {
+//     console.log('data was changed. do not trust!')
+// }
