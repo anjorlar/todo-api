@@ -7,7 +7,7 @@ const { ObjectID } = require('mongodb');
 
 const { mongoose } = require('./db/mongoose');
 const Todo = require('./models/todo');
-const user = require('./models/user');
+const User = require('./models/user');
 
 const app = express();
 
@@ -108,6 +108,22 @@ app.patch('/todos/:id', (req, res) => {
             todo
         })
     }).catch((e) => res.status(400).send({ text: `todo not found` }))
+});
+
+// creates a new user
+app.post('/users', (req, res) => {
+    let body = _.pick(req.body, ['email', 'password']);
+    let user = new User(body);
+
+    user.save().then((user) => {
+        res.send({
+            message: 'user created successfully',
+            user
+        })
+    }).catch((err) => res.status(400).send({
+        message: 'creating user was unsuccessful',
+        err
+    }))
 });
 
 app.listen(PORT, () => {
