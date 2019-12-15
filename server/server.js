@@ -132,6 +132,12 @@ app.post('/users', (req, res) => {
     }))
 });
 
+app.get('/users/me', (req, res) => {
+    let token = req.header('x-auth');
+
+    User.findByToken(token)
+})
+
 app.listen(PORT, () => {
     console.log(`app listening on port ${PORT}`);
 });
