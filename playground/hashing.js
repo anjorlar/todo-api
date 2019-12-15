@@ -12,6 +12,9 @@ let data = {
 let token = jwt.sign(data, '123abc');
 console.log(token)
 
+let decoded = jwt.verify(token, '123abc')
+console.log(decoded)
+
 // using 'crypto-js'
 
 // let message = 'abc123';
