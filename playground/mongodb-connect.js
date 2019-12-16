@@ -9,7 +9,7 @@ MongoClient.connect('mongodb://localhost:27017/TodoApp', (err, client) => {
     }
     console.log(`connected to mongodb server`);
 
-    const db = client.db('TodoApp')
+    const db = client.db('TodoApp');
 
     // db.collection('Todos').insertOne({
     //     text: 'Something to do',
