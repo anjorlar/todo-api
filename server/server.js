@@ -135,7 +135,15 @@ app.post('/users', (req, res) => {
 app.get('/users/me', (req, res) => {
     let token = req.header('x-auth');
 
-    User.findByToken(token)
+    User.findByToken(token).then((user) => {
+        if (!user) {
+
+        }
+        res.send({
+            message: `here is the user`,
+            user
+        });
+    })
 })
 
 app.listen(PORT, () => {
