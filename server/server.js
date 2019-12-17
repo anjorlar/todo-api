@@ -106,7 +106,7 @@ app.patch('/todos/:id', (req, res) => {
         res.status(200).send({
             message: 'todo updated successfully',
             todo
-        })
+        });
     }).catch((e) => res.status(400).send({ text: `todo not found` }))
 });
 
@@ -143,7 +143,7 @@ app.get('/users/me', (req, res) => {
             message: `here is the user`,
             user
         });
-    })
+    });
 });
 
 app.listen(PORT, () => {
