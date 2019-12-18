@@ -21,6 +21,7 @@ app.use(bodyParser.json());
 //     console.log(JSON.stringify(docs, undefined, 2))
 // }).catch((err) => console.log('unable to save', err))
 
+// creates new todo
 app.post('/todos', (req, res) => {
     let todo = new Todo({
         text: req.body.text
@@ -132,6 +133,7 @@ app.post('/users', (req, res) => {
     }))
 });
 
+// route to get a single user with the generated token
 app.get('/users/me', (req, res) => {
     let token = req.header('x-auth');
 
