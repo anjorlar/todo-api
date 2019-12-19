@@ -34,6 +34,7 @@ app.post('/todos', (req, res) => {
     }).catch((e) => res.status(400).send(e))
 });
 
+// route that gets all todos
 app.get('/todos', (req, res) => {
     Todo.find().then((todos) => {
         res.send({
@@ -43,6 +44,7 @@ app.get('/todos', (req, res) => {
     }).catch((e) => res.status(400).status(e))
 });
 
+// route that gets todo by id
 app.get('/todos/:id', (req, res) => {
     let id = req.params.id
     if (!ObjectID.isValid(id)) {
