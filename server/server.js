@@ -66,6 +66,7 @@ app.get('/todos/:id', (req, res) => {
     // res.send(req.params);
 });
 
+// deletes todo
 app.delete('/todos/:id', (req, res) => {
     let id = req.params.id;
 
@@ -86,6 +87,7 @@ app.delete('/todos/:id', (req, res) => {
         });
     }).catch((e) => res.status(400).send(e))
 });
+
 
 app.patch('/todos/:id', (req, res) => {
     let id = req.params.id;
