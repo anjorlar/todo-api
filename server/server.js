@@ -88,7 +88,7 @@ app.delete('/todos/:id', (req, res) => {
     }).catch((e) => res.status(400).send(e))
 });
 
-
+// creates an update route for todos by id
 app.patch('/todos/:id', (req, res) => {
     let id = req.params.id;
     let body = _.pick(req.body, ['text', 'completed'])
@@ -152,6 +152,7 @@ app.get('/users/me', (req, res) => {
     });
 });
 
+// app for port to listen on
 app.listen(PORT, () => {
     console.log(`app listening on port ${PORT}`);
 });
