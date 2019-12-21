@@ -3,6 +3,7 @@ const validator = require('validator');
 const jwt = require('jsonwebtoken');
 const _ = require('lodash');
 
+// user Schema
 let UserSchema = new mongoose.Schema({
     email: {
         type: String,

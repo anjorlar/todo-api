@@ -152,7 +152,6 @@ app.get('/users/me', (req, res) => {
     });
 });
 
-// app for port to listen on
 app.listen(PORT, () => {
     console.log(`app listening on port ${PORT}`);
 });
