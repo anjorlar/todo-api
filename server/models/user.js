@@ -3,7 +3,7 @@ const validator = require('validator');
 const jwt = require('jsonwebtoken');
 const _ = require('lodash');
 
-// user Schema
+// creates user Schema
 let UserSchema = new mongoose.Schema({
     email: {
         type: String,
@@ -72,6 +72,7 @@ UserSchema.statics.findByToken = function (token) {
     });
 };
 
+// creates user model
 let User = mongoose.model('User', UserSchema);
 
 module.exports = User;
