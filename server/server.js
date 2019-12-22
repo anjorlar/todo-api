@@ -115,7 +115,7 @@ app.patch('/todos/:id', (req, res) => {
     }).catch((e) => res.status(400).send({ text: `todo not found` }))
 });
 
-// creates a new user
+// creates a new user and generates a token for that user
 app.post('/users', (req, res) => {
     let body = _.pick(req.body, ['email', 'password']);
     let user = new User(body);
