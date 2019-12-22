@@ -174,7 +174,7 @@ describe('Patch todo/:id', () => {
 });
 
 // git commit -a -m 'adde new test case and route'
-// git commit -am 'added new file'
+// git commit -am 'added new file' correct command
 
 // Users-MBP:~ user$ cd mongo
 // Users-MBP:mongo user$ cd bin
