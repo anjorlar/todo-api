@@ -55,16 +55,18 @@ UserSchema.methods.generateAuthToken = function () {
     })
 };
 
-UserSchema.statics.findByToken = function (token) {
+UserSchema.statics.findByToken = async function (token) {
     let User = this;
     let decoded;
 
     try {
         decoded = jwt.verify(token, 'abc123')
     } catch (e) {
-        console.log('decoded', e)
+        // return new Promise((resolve, reject) => {
+        //     reject();
+        return Promise.reject();
     }
-    return User.findOne({
+    return await User.findOne({
         '_id': decoded._id,
         'tokens.token': token,
         'token.access': 'auth'

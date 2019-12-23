@@ -143,13 +143,26 @@ app.get('/users/me', (req, res) => {
 
     User.findByToken(token).then((user) => {
         if (!user) {
-
+            return Promise.reject();
         }
         res.send({
             message: `here is the user`,
             user
         });
-    });
+    }).catch((e) => {
+        res.status(401).send({
+            message: 'no user found'
+        })
+    })
+});
+
+app.get('/users', (req, res) => {
+    User.find().then((user) => {
+        res.send({
+            message: 'all user gotten successfully',
+            user
+        })
+    }).catch((e) => res.status(400).status(e))
 });
 
 app.listen(PORT, () => {
