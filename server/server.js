@@ -66,7 +66,7 @@ app.get('/todos/:id', (req, res) => {
     // res.send(req.params);
 });
 
-// deletes todo
+// deletes a single todo
 app.delete('/todos/:id', (req, res) => {
     let id = req.params.id;
 
