@@ -8,6 +8,7 @@ const { ObjectID } = require('mongodb');
 const { mongoose } = require('./db/mongoose');
 const Todo = require('./models/todo');
 const User = require('./models/user');
+const authenticate = require('./middleware/authenticate');
 
 const app = express();
 
@@ -138,22 +139,10 @@ app.post('/users', (req, res) => {
 });
 
 // route to get a single user with the generated token
-app.get('/users/me', (req, res) => {
-    let token = req.header('x-auth');
-
-    User.findByToken(token).then((user) => {
-        if (!user) {
-            return Promise.reject();
-        }
-        res.send({
-            message: `here is the user`,
-            user
-        });
-    }).catch((e) => {
-        res.status(401).send({
-            message: 'no user found'
-        })
-    })
+app.get('/users/me', authenticate, (req, res) => {
+    res.send(
+        req.user
+    );
 });
 
 app.get('/users', (req, res) => {
