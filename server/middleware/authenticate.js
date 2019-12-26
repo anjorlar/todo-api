@@ -15,6 +15,6 @@ const authenticate = (req, res, next) => {
             message: 'no user found'
         })
     })
-}
+};
 
 module.exports = authenticate;

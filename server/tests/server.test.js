@@ -17,6 +17,7 @@ beforeEach((done) => {
         Todo.insertMany(todos);
     }).then(() => done())
 });
+
 describe("Post /todos", () => {
     it('should create a new todo', (done) => {
         let text = 'Test todo text';
