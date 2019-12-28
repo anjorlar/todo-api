@@ -19,7 +19,7 @@ const users = [{
     email: 'ajy@example.com',
     password: 'usertwo'
 
-}]
+}];
 
 const todos = [{
     _id: new ObjectID(),
@@ -48,4 +48,4 @@ const populateUsers = (done) => {
 };
 module.exports = {
     todos, populateTodos, users, populateUsers
-}
+};
