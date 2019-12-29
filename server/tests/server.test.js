@@ -3,6 +3,7 @@ const request = require('supertest');
 const { ObjectID } = require('mongodb');
 const app = require('../server');
 const Todo = require('../models/todo');
+const User = require('../models/user')
 const { todos, populateTodos, users, populateUsers } = require('./seed/seed');
 
 beforeEach(populateTodos);
@@ -198,17 +199,43 @@ describe('Post /users', () => {
             .send({ email, password })
             .expect(200)
             .expect((res) => {
-                // console.log(res)
                 expect(res.headers['x-auth']).toBeTruthy();
                 expect(res.body.user._id).toBeTruthy();
                 expect(res.body.user.email).toBe(email);
             })
-            .end(done)
+            // .end(done)
+            .end((err) => {
+                if (err) {
+                    return done(err)
+                }
+                User.findOne({ email }).then((user) => {
+                    expect(user).toBeTruthy()
+                    expect(user.password).not.toBe(password)
+                    done()
+                })
+            })
     });
 
-    // it(`should return validation errors if request is invalid`, (done) => {
+    it(`should return validation errors if request is invalid`, (done) => {
 
-    // })
+        request(app)
+            .post('/users')
+            .send({
+                email: 'abe',
+                password: '123'
+            })
+            .expect(400)
+            .end(done)
+            .expect((res) => {
+                expect(res.body.message).toBe('creating user was unsuccessful')
+                expect(res.body.user).toBeFalsy()
+                // expect(res.body.err.message).toBeFalsy()
+                // toBe('User validation failed: password: Path `password` is required., email: Path `email` is required.')
+                expect(res.body.err._message).toBe('User validation failed')
+                // console.log("bodyyyyyyyy", res.body)
+                // console.log('errorrrrrrrrrr', res.error)
+            })
+    })
 
     // it(`should not create user if email is in use`, (done) => {
 
