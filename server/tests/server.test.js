@@ -186,7 +186,7 @@ describe('Get /users/me', () => {
             })
             .end(done);
     })
-})
+});
 
 describe('Post /users', () => {
     it('should create a user', (done) => {
@@ -213,7 +213,7 @@ describe('Post /users', () => {
     // it(`should not create user if email is in use`, (done) => {
 
     // })
-})
+});
 // git commit -a -m 'adde new test case and route' correct command
 // git commit -am 'added new file' correct command
 
