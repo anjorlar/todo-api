@@ -138,6 +138,12 @@ app.post('/users', (req, res) => {
     }))
 });
 
+
+app.post('/users/login', (req, res) => {
+    let body = _.pick(req.body, ['email', 'password']);
+
+    res.send(body)
+})
 // route to get a single user with the generated token
 app.get('/users/me', authenticate, (req, res) => {
     res.send(

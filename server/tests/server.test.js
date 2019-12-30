@@ -1,6 +1,7 @@
 const expect = require('expect');
 const request = require('supertest');
 const { ObjectID } = require('mongodb');
+
 const app = require('../server');
 const Todo = require('../models/todo');
 const User = require('../models/user');
@@ -217,7 +218,6 @@ describe('Post /users', () => {
     });
 
     it(`should return validation errors if request is invalid`, (done) => {
-
         request(app)
             .post('/users')
             .send({
@@ -232,32 +232,19 @@ describe('Post /users', () => {
                 // expect(res.body.err.message).toBeFalsy()
                 // toBe('User validation failed: password: Path `password` is required., email: Path `email` is required.')
                 expect(res.body.err._message).toBe('User validation failed')
-                // console.log("bodyyyyyyyy", res.body)
-                // console.log('errorrrrrrrrrr', res.error)
             })
     });
 
-    // it(`should not create user if email is in use`, (done) => {
+    it(`should not create user if email is in use`, (done) => {
+        request(app)
+            // console.log('hjbdcjhdjb', users[0])
+            .post('/users')
+            .send({
+                email: users[0].email,
+                password: 'Password123!'
+            })
+            .expect(400)
+            .end(done)
+    })
 
-    // })
 });
-// git commit -a -m 'adde new test case and route' correct command
-// git commit -am 'added new file' correct command
-
-// Users-MBP:~ user$ cd mongo
-// Users-MBP:mongo user$ cd bin
-// Users-MBP:bin user$ ./mongod --dbpath ~/mongo-data
-
-/*
-Last login: Mon Dec  2 13:08:22 on ttys006
-Users-MBP:bin user$ redis-cli
-127.0.0.1:6379> select 1
-OK
-127.0.0.1:6379[1]>
-Users-MBP:bin user$ redis-cli
-127.0.0.1:6379> select 10
-OK
-127.0.0.1:6379[10]>
-Users-MBP:bin user$
-git add -a -m 'fixed typo in server.js'
-*/
