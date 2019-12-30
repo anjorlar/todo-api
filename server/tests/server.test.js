@@ -3,7 +3,7 @@ const request = require('supertest');
 const { ObjectID } = require('mongodb');
 const app = require('../server');
 const Todo = require('../models/todo');
-const User = require('../models/user')
+const User = require('../models/user');
 const { todos, populateTodos, users, populateUsers } = require('./seed/seed');
 
 beforeEach(populateTodos);
@@ -186,7 +186,7 @@ describe('Get /users/me', () => {
                 expect(res.body.message).toBe("no user found")
             })
             .end(done);
-    })
+    });
 });
 
 describe('Post /users', () => {
@@ -235,7 +235,7 @@ describe('Post /users', () => {
                 // console.log("bodyyyyyyyy", res.body)
                 // console.log('errorrrrrrrrrr', res.error)
             })
-    })
+    });
 
     // it(`should not create user if email is in use`, (done) => {
 
