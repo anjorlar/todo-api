@@ -166,6 +166,15 @@ app.get('/users', (req, res) => {
     }).catch((e) => res.status(400).status(e))
 });
 
+app.delete('/users/me/token', authenticate, (req, res) => {
+    req.user.removeToken(req.token).then(() => {
+        res.status(200).send({
+            message: `token successfully deleted`
+        })
+    }).catch(() => res.status(400).send({
+        message: `error deleting token`
+    }))
+})
 app.listen(PORT, () => {
     console.log(`app listening on port ${PORT}`);
 });
