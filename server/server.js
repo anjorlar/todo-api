@@ -138,7 +138,7 @@ app.post('/users', (req, res) => {
     }))
 });
 
-
+/** route to login a user */
 app.post('/users/login', (req, res) => {
     let body = _.pick(req.body, ['email', 'password']);
 
