@@ -15,6 +15,7 @@ describe("Post /todos", () => {
         let text = 'Test todo text';
         request(app)
             .post('/todos')
+            .set('x-auth', users[0].tokens[0].token)
             .send({
                 text
             })
@@ -39,6 +40,7 @@ describe("Post /todos", () => {
         let text = '';
         request(app)
             .post('/todos')
+            .set(`x-auth`, users[0].tokens[0].token)
             .send({ text })
             .expect(400)
             .end((err, res) => {
@@ -57,9 +59,10 @@ describe('get/todos', () => {
     it('should get all todos', (done) => {
         request(app)
             .get('/todos')
+            .set('x-auth', users[0].tokens[0].token)
             .expect(200)
             .expect((res) => {
-                expect(res.body.todos.length).toBe(2);
+                expect(res.body.todos.length).toBe(1);
             })
             .end(done)
     });
@@ -69,6 +72,7 @@ describe('get/todos:id', () => {
     it('should get todo by id', (done) => {
         request(app)
             .get(`/todos/${todos[0]._id.toHexString()}`)
+            .set('x-auth', users[0].tokens[0].token)
             .expect(200)
             .expect((res) => {
                 expect(res.body.todo.text).toBe(todos[0].text)
@@ -80,6 +84,7 @@ describe('get/todos:id', () => {
         let hexId = new ObjectID().toHexString();
         request(app)
             .get(`/todos/${hexId}`)
+            .set('x-auth', users[0].tokens[0].token)
             .expect(404)
             .end(done)
     });
@@ -87,6 +92,7 @@ describe('get/todos:id', () => {
     it('should return 404 for non-object ids', (done) => {
         request(app)
             .get('/todos/123anh')
+            .set('x-auth', users[0].tokens[0].token)
             .expect(404)
             .end(done)
     });
@@ -252,6 +258,7 @@ describe('Post user/login', () => {
     it('should login user and return auth token', (done) => {
         request(app)
             .post('/users/login')
+            // .set('x-auth', users[1].tokens[1].token)
             .send({
                 email: users[1].email,
                 password: users[1].password
@@ -265,7 +272,7 @@ describe('Post user/login', () => {
                     return done(err)
                 }
                 User.findById(users[1]._id).then((user) => {
-                    expect(user.tokens[0]).toMatchObject({
+                    expect(user.tokens[1]).toMatchObject({
                         access: 'auth',
                         token: res.headers['x-auth']
                     })
@@ -277,6 +284,7 @@ describe('Post user/login', () => {
     it('should reject invalid login', (done) => {
         request(app)
             .post('/users/login')
+            // .set('x-auth', users[1].tokens[1].token)
             .send({
                 email: users[1].email,
                 password: users[1].password + '2'
@@ -290,7 +298,7 @@ describe('Post user/login', () => {
                     return done(err)
                 }
                 User.findById(users[1]._id).then((user) => {
-                    expect(user.tokens.length).toBe(0)
+                    expect(user.tokens.length).toBe(1)
                     done()
                 }).catch((err) => done(err))
             })
