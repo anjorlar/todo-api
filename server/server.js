@@ -98,7 +98,7 @@ app.delete('/todos/:id', authenticate, (req, res) => {
     }).catch((e) => res.status(400).send(e))
 });
 
-// creates an update route for todos by id
+// updates todos by id
 app.patch('/todos/:id', authenticate, (req, res) => {
     let id = req.params.id;
     let body = _.pick(req.body, ['text', 'completed'])
@@ -179,6 +179,7 @@ app.get('/users', (req, res) => {
     }).catch((e) => res.status(400).status(e))
 });
 
+/* deletes a user's token */
 app.delete('/users/me/token', authenticate, (req, res) => {
     req.user.removeToken(req.token).then(() => {
         res.status(200).send({
