@@ -1,5 +1,6 @@
 const User = require('./../models/user');
 
+/** authenticate middleware allows access where token is provided */
 const authenticate = (req, res, next) => {
     let token = req.header('x-auth');
 

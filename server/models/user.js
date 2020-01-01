@@ -85,7 +85,7 @@ UserSchema.methods.removeToken = function (token) {
             }
         }
     })
-}
+};
 
 UserSchema.statics.findByCredentials = function (email, password) {
     let User = this;
@@ -105,7 +105,7 @@ UserSchema.statics.findByCredentials = function (email, password) {
             })
         })
     })
-}
+};
 
 UserSchema.pre('save', function (next) {
     let user = this;

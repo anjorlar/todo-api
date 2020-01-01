@@ -160,7 +160,7 @@ app.post('/users/login', (req, res) => {
             res.header('x-auth', token).send(user);
         })
     }).catch((e) => {
-        res.status(400).send()
+        res.status(400).send(e)
     });
 })
 // route to get a single user with the generated token
@@ -176,7 +176,7 @@ app.get('/users', (req, res) => {
             message: 'all user gotten successfully',
             user
         })
-    }).catch((e) => res.status(400).status(e))
+    }).catch((e) => res.status(400).send(e))
 });
 
 /* deletes a user's token */
@@ -185,8 +185,9 @@ app.delete('/users/me/token', authenticate, (req, res) => {
         res.status(200).send({
             message: `token successfully deleted`
         })
-    }).catch(() => res.status(400).send({
-        message: `error deleting token`
+    }).catch((e) => res.status(400).send({
+        message: `error deleting token`,
+        e
     }))
 })
 app.listen(PORT, () => {
