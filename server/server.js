@@ -15,13 +15,6 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 app.use(bodyParser.json());
 
-// let user = new User({
-//     email: 'ade@hotmail.com'
-// })
-// user.save().then((docs) => {
-//     console.log(JSON.stringify(docs, undefined, 2))
-// }).catch((err) => console.log('unable to save', err))
-
 // creates new todo
 app.post('/todos', authenticate, (req, res) => {
     let todo = new Todo({

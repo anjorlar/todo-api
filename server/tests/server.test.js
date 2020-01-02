@@ -293,7 +293,7 @@ describe('Post /users', () => {
             })
             .expect(400)
             .end(done)
-    })
+    });
 });
 
 describe('Post user/login', () => {
