@@ -321,7 +321,7 @@ describe('Post user/login', () => {
                     done()
                 }).catch((e) => done(e))
             })
-    })
+    });
 
     it('should reject invalid login', (done) => {
         request(app)
