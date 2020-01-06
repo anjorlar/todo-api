@@ -344,7 +344,7 @@ describe('Post user/login', () => {
                     done()
                 }).catch((err) => done(err))
             })
-    })
+    });
 })
 
 describe('Delete users/me/token', (done) => {
