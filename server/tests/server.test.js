@@ -356,7 +356,7 @@ describe('Delete users/me/token', (done) => {
             .end((err, res) => {
                 if (err) {
                     return done(err)
-                }
+                };
                 User.findById(users[0]._id).then((user) => {
                     expect(user.tokens.length).toBe(0)
                     done()
