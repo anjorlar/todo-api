@@ -319,7 +319,7 @@ describe('Post user/login', () => {
                         token: res.headers['x-auth']
                     })
                     done()
-                }).catch((e) => done(e))
+                }).catch((e) => done(e));
             })
     });
 
