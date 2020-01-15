@@ -57,7 +57,7 @@ app.get('/todos/:id', authenticate, (req, res) => {
             return res.status(404).send({
                 text: 'id does not exist'
             })
-        }
+        };
         res.send({
             message: "todo gotten by ID successfully",
             todo
@@ -73,7 +73,7 @@ app.delete('/todos/:id', authenticate, (req, res) => {
     if (!ObjectID.isValid(id)) {
         return res.status(404).send({
             text: 'id is not valid'
-        })
+        });
     }
     Todo.findOneAndRemove({
         _id: id,
