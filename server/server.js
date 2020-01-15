@@ -25,8 +25,8 @@ app.post('/todos', authenticate, (req, res) => {
         res.send({
             message: "todo created successfully",
             doc
-        })
-    }).catch((e) => res.status(400).send(e))
+        });
+    }).catch((e) => res.status(400).send(e));
 });
 
 // route that gets all todos
