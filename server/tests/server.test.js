@@ -318,7 +318,7 @@ describe('Post user/login', () => {
                         access: 'auth',
                         token: res.headers['x-auth']
                     })
-                    done()
+                    done();
                 }).catch((e) => done(e));
             })
     });
