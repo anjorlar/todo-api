@@ -37,7 +37,7 @@ app.get('/todos', authenticate, (req, res) => {
         res.send({
             message: 'all todo for the user gotten successfully',
             todos
-        })
+        });
     }).catch((e) => res.status(400).status(e))
 });
 
