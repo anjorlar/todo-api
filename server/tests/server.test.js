@@ -320,7 +320,7 @@ describe('Post user/login', () => {
                     })
                     done();
                 }).catch((e) => done(e));
-            })
+            });
     });
 
     it('should reject invalid login', (done) => {
@@ -342,7 +342,7 @@ describe('Post user/login', () => {
                 User.findById(users[1]._id).then((user) => {
                     expect(user.tokens.length).toBe(1)
                     done()
-                }).catch((err) => done(err))
+                }).catch((err) => done(err));
             })
     });
 })
