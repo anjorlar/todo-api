@@ -15,7 +15,7 @@ const authenticate = (req, res, next) => {
         res.status(401).send({
             message: 'token does not exist'
         });
-    })
+    });
 };
 
 module.exports = authenticate;
