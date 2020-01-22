@@ -22,7 +22,7 @@ Todo.findOne({
 
 Todo.findById(id).then((todo) => {
     if (!todo) {
-        return console.log('could not fetch todo')
+        return console.log('could not fetch todo');
     }
     console.log("todo by id", todo)
 })
