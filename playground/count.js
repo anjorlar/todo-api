@@ -1,4 +1,4 @@
-let one = 1
+let one = 1;
 let count = 0
 if (one == 2) {
     console.log('hello')
