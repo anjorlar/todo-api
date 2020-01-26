@@ -4,5 +4,5 @@ if (one == 2) {
     console.log('hello')
 } else {
     count++
-    console.log(count)
+    console.log(count);
 }
