@@ -11,7 +11,7 @@ if (!ObjectID.isValid(id)) {
 Todo.find({
     _id: id
 }).then((todos) => {
-    console.log('Todos find', todos)
+    console.log('Todos find', todos);
 });
 
 Todo.findOne({
