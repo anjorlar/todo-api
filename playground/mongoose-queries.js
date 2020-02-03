@@ -24,7 +24,7 @@ Todo.findById(id).then((todo) => {
     if (!todo) {
         return console.log('could not fetch todo');
     }
-    console.log("todo by id", todo)
+    console.log("todo by id", todo);
 })
 
 user.findById('5de53704abd865617f0b0c85').then((user) => {
