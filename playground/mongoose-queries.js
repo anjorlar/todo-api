@@ -31,5 +31,5 @@ user.findById('5de53704abd865617f0b0c85').then((user) => {
     if (!user) {
         return console.log('id not found');
     }
-    console.log('user by id ', user)
+    console.log('user by id ', user);
 }).catch((e) => console.log(e));
