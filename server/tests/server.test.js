@@ -345,7 +345,7 @@ describe('Post user/login', () => {
                 }).catch((err) => done(err));
             })
     });
-})
+});
 
 describe('Delete users/me/token', (done) => {
     it(`should remove auth token on login`, (done) => {
