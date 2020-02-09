@@ -363,4 +363,4 @@ describe('Delete users/me/token', (done) => {
                 }).catch((err) => done(err))
             })
     });
-})
+});
