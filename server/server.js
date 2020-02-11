@@ -94,7 +94,7 @@ app.delete('/todos/:id', authenticate, (req, res) => {
 // updates todos by id
 app.patch('/todos/:id', authenticate, (req, res) => {
     let id = req.params.id;
-    let body = _.pick(req.body, ['text', 'completed'])
+    let body = _.pick(req.body, ['text', 'completed']);
 
     if (!ObjectID.isValid(id)) {
         return res.status(404).send()

@@ -343,7 +343,7 @@ describe('Post user/login', () => {
                     expect(user.tokens.length).toBe(1)
                     done()
                 }).catch((err) => done(err));
-            })
+            });
     });
 });
 
