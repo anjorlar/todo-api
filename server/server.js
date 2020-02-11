@@ -119,7 +119,7 @@ app.patch('/todos/:id', authenticate, (req, res) => {
                 message: 'todo updated successfully',
                 todo
             });
-        }).catch((e) => res.status(400).send({ text: `todo not found` }))
+        }).catch((e) => res.status(400).send({ text: `todo not found` }));
 });
 
 // creates a new user and generates a token for that user
