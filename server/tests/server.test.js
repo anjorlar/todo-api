@@ -361,6 +361,6 @@ describe('Delete users/me/token', (done) => {
                     expect(user.tokens.length).toBe(0)
                     done()
                 }).catch((err) => done(err))
-            })
+            });
     });
 });
