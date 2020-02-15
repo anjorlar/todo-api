@@ -292,7 +292,7 @@ describe('Post /users', () => {
                 password: 'Password123!'
             })
             .expect(400)
-            .end(done)
+            .end(done);
     });
 });
 
