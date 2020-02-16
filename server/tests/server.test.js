@@ -210,7 +210,7 @@ describe('Patch todo/:id', () => {
                 expect(res.body.todo.completed).toBe(false)
                 expect(res.body.todo.completedAt).toBeFalsy()
             })
-            .end(done)
+            .end(done);
     });
 });
 
