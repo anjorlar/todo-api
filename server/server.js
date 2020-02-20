@@ -183,6 +183,8 @@ app.delete('/users/me/token', authenticate, (req, res) => {
         e
     }))
 })
+
+//port to listen on
 app.listen(PORT, () => {
     console.log(`app listening on port ${PORT}`);
 });
