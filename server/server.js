@@ -177,7 +177,7 @@ app.delete('/users/me/token', authenticate, (req, res) => {
     req.user.removeToken(req.token).then(() => {
         res.status(200).send({
             message: `token successfully deleted`
-        })
+        });
     }).catch((e) => res.status(400).send({
         message: `error deleting token`,
         e
