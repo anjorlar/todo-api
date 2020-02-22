@@ -56,7 +56,7 @@ app.get('/todos/:id', authenticate, (req, res) => {
         if (!todo) {
             return res.status(404).send({
                 text: 'id does not exist'
-            })
+            });
         };
         res.send({
             message: "todo gotten by ID successfully",
