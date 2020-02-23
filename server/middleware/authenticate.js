@@ -10,7 +10,7 @@ const authenticate = (req, res, next) => {
         };
         req.user = user;
         req.token = token;
-        next()
+        next();
     }).catch((e) => {
         res.status(401).send({
             message: 'token does not exist'

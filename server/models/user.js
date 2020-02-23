@@ -72,7 +72,7 @@ UserSchema.statics.findByToken = async function (token) {
         // return new Promise((resolve, reject) => {
         //     reject();
         return Promise.reject();
-    }
+    };
 };
 
 UserSchema.methods.removeToken = function (token) {
