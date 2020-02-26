@@ -262,7 +262,7 @@ describe('Post /users', () => {
                     expect(user.password).not.toBe(password)
                     done()
                 }).catch((e) => done(e))
-            })
+            });
     });
 
     it(`should return validation errors if request is invalid`, (done) => {

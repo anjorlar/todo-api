@@ -76,7 +76,7 @@ UserSchema.statics.findByToken = async function (token) {
 };
 
 UserSchema.methods.removeToken = function (token) {
-    let user = this
+    let user = this;
 
     return user.updateOne({
         $pull: {
