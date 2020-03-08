@@ -53,7 +53,7 @@ UserSchema.methods.generateAuthToken = function () {
     user.tokens = user.tokens.concat([{ access, token }]);
     return user.save().then(() => {
         return token;
-    });
+    }).catch(err => console.log('err saving and returning token', err));
 };
 
 UserSchema.statics.findByToken = async function (token) {
@@ -84,7 +84,7 @@ UserSchema.methods.removeToken = function (token) {
                 token: token
             }
         }
-    })
+    });
 };
 
 UserSchema.statics.findByCredentials = function (email, password) {
