@@ -41,7 +41,7 @@ const populateTodos = (done) => {
     Todo.deleteMany({}).then(() => {
         Todo.insertMany(todos);
     }).then(() => done())
-        .catch(e => console.log("todo error", e))
+        .catch(e => console.log("todo error", e));
 };
 
 const populateUsers = (done) => {

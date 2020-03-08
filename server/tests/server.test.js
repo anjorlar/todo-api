@@ -275,7 +275,7 @@ describe('Post /users', () => {
             .expect(400)
             .end(done)
             .expect((res) => {
-                expect(res.body.message).toBe('creating user was unsuccessful')
+                expect(res.body.message).toBe('creating user was unsuccessful');
                 expect(res.body.user).toBeFalsy()
                 // expect(res.body.err.message).toBeFalsy()
                 // toBe('User validation failed: password: Path `password` is required., email: Path `email` is required.')
@@ -307,7 +307,7 @@ describe('Post user/login', () => {
             })
             .expect(200)
             .expect((res) => {
-                expect(res.headers['x-auth']).toBeTruthy()
+                expect(res.headers['x-auth']).toBeTruthy();
             })
             .end((err, res) => {
                 if (err) {
