@@ -88,7 +88,7 @@ app.delete('/todos/:id', authenticate, (req, res) => {
             message: 'todo deleted by ID successfuly',
             todo
         });
-    }).catch((e) => res.status(400).send(e))
+    }).catch((e) => res.status(400).send(e));
 });
 
 // updates todos by id
