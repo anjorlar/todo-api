@@ -177,7 +177,7 @@ describe('Patch todo/:id', () => {
                 expect(res.body.todo.completed).toBe(true);
                 expect(typeof res.body.todo.completedAt).toBe('number');
             })
-            .end(done)
+            .end(done);
     });
 
     it('should not update todo created by other user', (done) => {
