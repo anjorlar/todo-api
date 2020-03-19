@@ -240,7 +240,7 @@ describe('Get /users/me', () => {
 
 describe('Post /users', () => {
     it('should create a user', (done) => {
-        let email = 'ali@example.com'
+        let email = 'ali@example.com';
         let password = '123mnb!'
 
         request(app)
