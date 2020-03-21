@@ -279,7 +279,7 @@ describe('Post /users', () => {
                 expect(res.body.user).toBeFalsy()
                 // expect(res.body.err.message).toBeFalsy()
                 // toBe('User validation failed: password: Path `password` is required., email: Path `email` is required.')
-                expect(res.body.err._message).toBe('User validation failed')
+                expect(res.body.err._message).toBe('User validation failed');
             });
     });
 
