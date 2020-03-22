@@ -153,7 +153,7 @@ app.post('/users/login', (req, res) => {
             res.header('x-auth', token).send(user);
         })
     }).catch((e) => {
-        res.status(400).send(e)
+        res.status(400).send(e);
     });
 })
 // route to get a single user with the generated token
