@@ -182,7 +182,7 @@ app.delete('/users/me/token', authenticate, (req, res) => {
         message: `error deleting token`,
         e
     }))
-})
+});
 
 //port to listen on
 app.listen(PORT, () => {
