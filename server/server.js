@@ -155,7 +155,7 @@ app.post('/users/login', (req, res) => {
     }).catch((e) => {
         res.status(400).send(e);
     });
-})
+});
 // route to get a single user with the generated token
 app.get('/users/me', authenticate, (req, res) => {
     res.send(
