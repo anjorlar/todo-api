@@ -141,7 +141,7 @@ app.post('/users', (req, res) => {
     }).catch((err) => res.status(400).send({
         message: 'creating user was unsuccessful',
         err
-    }))
+    }));
 });
 
 /** route to login a user */
