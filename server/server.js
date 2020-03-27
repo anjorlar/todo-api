@@ -62,7 +62,7 @@ app.get('/todos/:id', authenticate, (req, res) => {
             message: "todo gotten by ID successfully",
             todo
         });
-    }).catch((err) => res.status(400).send(err))
+    }).catch((err) => res.status(400).send(err));
     // res.send(req.params);
 });
 
@@ -181,7 +181,7 @@ app.delete('/users/me/token', authenticate, (req, res) => {
     }).catch((e) => res.status(400).send({
         message: `error deleting token`,
         e
-    }))
+    }));
 });
 
 //port to listen on
