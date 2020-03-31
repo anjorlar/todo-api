@@ -256,7 +256,7 @@ describe('Post /users', () => {
             .end((err) => {
                 if (err) {
                     return done(err)
-                }
+                };
                 User.findOne({ email }).then((user) => {
                     expect(user).toBeTruthy()
                     expect(user.password).not.toBe(password)
