@@ -312,7 +312,7 @@ describe('Post user/login', () => {
             .end((err, res) => {
                 if (err) {
                     return done(err);
-                }
+                };
                 User.findById(users[1]._id).then((user) => {
                     expect(user.tokens[1]).toMatchObject({
                         access: 'auth',
