@@ -38,7 +38,7 @@ app.get('/todos', authenticate, (req, res) => {
             message: 'all todo for the user gotten successfully',
             todos
         });
-    }).catch((e) => res.status(400).status(e))
+    }).catch((e) => res.status(400).status(e));
 });
 
 // route that gets todo by id
