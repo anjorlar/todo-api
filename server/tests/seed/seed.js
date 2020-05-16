@@ -61,7 +61,7 @@ module.exports = {
 // git commit -am 'added new file' correct command
 
 // Users-MBP:~ user$ cd mongo
-// Users-MBP:mongo user$ cd bin
+// Users-MBP:mongo user$ cd bin or pwd cd /Users/user/mongo/bin
 // Users-MBP:bin user$ ./mongod --dbpath ~/mongo-data
 // db.createUser({"user": "anjy", "pwd": "oluwatomisn", "roles": ["readWrite"], "db": "oda"})
 

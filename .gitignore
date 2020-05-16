@@ -6,3 +6,4 @@ playground/terminal.js
 controllerROS.js
 route.js
 *txt
+.DS_Store
