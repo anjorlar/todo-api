@@ -56,18 +56,6 @@ module.exports = {
     todos, populateTodos, users, populateUsers
 };
 
-//mongodb://anjy:oluwatomisn@localhost:27017/?authSource=admin&readPreference=primary&appname=MongoDB%20Compass&ssl=false
-// git commit -a -m 'adde new test case and route' correct command
-// git commit -am 'added new file' correct command
-
-// Users-MBP:~ user$ cd mongo
-// Users-MBP:mongo user$ cd bin or pwd cd /Users/user/mongo/bin
-// Users-MBP:bin user$ ./mongod --dbpath ~/mongo-data
-// db.createUser({"user": "anjy", "pwd": "oluwatomisn", "roles": ["readWrite"], "db": "oda"})
-
-// db.createUser({"user": "anjy", "pwd": "oluwatomisn","roles": [{ "role": "readWrite", "db": "admin" }],"passwordDigestor": "server"})
-
-// db.createUser({"user": "anjy","pwd": "oluwatomisn","roles": [ { "role": "userAdminAnyDatabase", "db": "admin" } ],"passwordDigestor": "server"})
 
 
 /*
